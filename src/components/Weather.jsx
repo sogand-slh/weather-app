@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Typography from "@mui/material/Typography";
-import { Fab } from "@mui/material";
 //Import Others library
 import moment from "moment";
 
 //Import Icons
 import CloudIcon from "@mui/icons-material/Cloud";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
-import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import TodayOutlinedIcon from "@mui/icons-material/TodayOutlined";
 //import styles
@@ -64,10 +62,10 @@ const Weather = () => {
 
   const handleSubmit = (event) => {
     setIsCity(event.target.value);
-    // getWeatherData(isCity);
+    getWeather(isCity);
   };
-
-  console.log(data);
+  var today = new Date();
+  var isDay = today.getHours() > 18 ? 0 : 1;
   return (
     <>
       <React.Fragment>
@@ -122,7 +120,7 @@ const Weather = () => {
               </div>
             </div>
 
-            <form className="formCity" onClick={handleSubmit}>
+            <form className="formCity">
               <label>City: </label>
               <input
                 className="inputCity"
@@ -134,9 +132,9 @@ const Weather = () => {
                 style={{}}
                 onChange={handleSubmit}
               />
-              <Fab size="small" aria-label="search">
+              {/* <Fab size="small" aria-label="search">
                 <SearchOutlinedIcon />
-              </Fab>
+              </Fab> */}
             </form>
             <div className="info">
               <DaysDetails data={data.days} />

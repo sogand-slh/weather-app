@@ -1,11 +1,12 @@
 .card {
-  width: 550px;
+  width: 400px;
   height: 500px;
   border-radius: 25px !important;
   box-shadow: 1px 5px 10px 5px rgba(0, 0, 0, 0.15) !important;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
+  background-color: white;
 }
 
 .left_side {
@@ -20,26 +21,12 @@
   align-items: center;
   flex-wrap: nowrap;
   flex-direction: row !important;
-}  
+}
 .right_side .symb_cent {
   font-size: 12px;
   margin-bottom: 10px;
 }
-.image_info_day {
-  display: flex;
-  border-radius: 25px 25px 0 0;
-  height: 40%;
-  /* background:linear-gradient(90deg, rgba(113,113,210,0.4906337535014006) 0%, rgba(212,240,255,1) 100%) */
-  background: linear-gradient(to right, #0052d4, #65c7f7, #9cecfb);
-}
-.image_info_night {
-  display: flex;
-  border-radius: 25px 25px 0 0;
-  height: 40%;
-  /* background:linear-gradient(90deg, rgba(113,113,210,0.4906337535014006) 0%, rgba(212,240,255,1) 100%) */
-  /* color: aliceblue; */
-  background: linear-gradient(to right, #000b46, #181a82, #2f27b9);
-}
+
 .img_info_cityName {
   text-align: left;
   padding: 15px;
@@ -71,9 +58,10 @@
   }
 }
 .info {
+  margin-top: 25px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 /* */
 .detailDay {
@@ -89,13 +77,13 @@
   align-content: flex-end;
   align-items: center;
 }
-.inputCity{
+.inputCity {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  border:1px solid #bdccdb;
+  border: 1px solid #bdccdb;
   max-width: 75%;
   padding: 5px;
   border-radius: 5px;
-  color: #37474f,
+  color: #37474f;
 }

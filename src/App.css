@@ -1,0 +1,10 @@
+.image_info_day {
+  display: flex;
+  height: 100% !important;
+  background: linear-gradient(to right, #0052d4, #65c7f7, #9cecfb);
+}
+.image_info_night {
+  display: flex;
+  height: 100% !important;
+  background: linear-gradient(to right, #000b46, #181a82, #2f27b9);
+}

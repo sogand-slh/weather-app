@@ -1,32 +1,42 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
-import { Card, CardContent, CardActionArea } from "@mui/material";
 
 //Import Others library
 import moment from "moment";
-
 //import Css
 import "./weather.css";
 import { blueGrey } from "@mui/material/colors";
+import { Box } from "@mui/material";
 
 const DaysDetails = (data) => {
   let uniqDaysData;
-  const chrt = data?.data;
-  const days = chrt?.map((item) => item.dt_txt.split(" ").[0]);
+  const _data = data?.data;
+  const days = _data?.map((item) => item.dt_txt.split(" ").[0]);
   const uniqDay = [...new Set(days)];
 
  uniqDaysData =uniqDay?.map((item)=>
-chrt.filter(x=>x.dt_txt.split(" ").[0]=== item)?.[0]);
+ _data.filter(x=>x.dt_txt.split(" ")?.[0]=== item)?.[0]);
+  console.log(uniqDaysData,"uniqDaysData");
+  uniqDaysData.shift();
 
-
-  
-  console.log(uniqDaysData );
   return (
     <React.Fragment>
       {" "}
       {uniqDaysData?.map((x) => (
-        
+      
           <div>
+            <Box
+              sx={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                p: 1,
+                m: 1,
+                bgcolor: "#c0eaff",
+                width: 100,
+                height:100,
+                borderRadius: 2,
+              }}
+            >
             <Typography
               variant="h6"
               style={{
@@ -37,11 +47,13 @@ chrt.filter(x=>x.dt_txt.split(" ").[0]=== item)?.[0]);
               component="div">
               {Math.trunc(Number((x.main.temp- 273.15)))}
               <span style={{ fontSize: "12px" }}>°C</span>
-              <img
+              
+                <img 
                 style={{ width: "35px", height: "35px" }}
-                alt={x?.day?.condition?.text}
-                src={x?.day?.condition?.icon}
-              />
+                alt=""
+                src={`http://openweathermap.org/img/w/${x?.weather?.[0]?.icon}.png`}
+                 />
+              
             </Typography>
             <div>
               <Typography
@@ -53,7 +65,7 @@ chrt.filter(x=>x.dt_txt.split(" ").[0]=== item)?.[0]);
                 }}
                 component="div"
                 variant="body1">
-                {moment(x.dt_txt.split(" ").[0]).format("dddd")}
+                {moment(x.dt_txt.split(" ")?.[0]).format("dddd")}
               </Typography>
               <Typography
                 style={{
@@ -63,9 +75,10 @@ chrt.filter(x=>x.dt_txt.split(" ").[0]=== item)?.[0]);
                   justifyContent: "center",
                 }}
                 component="div">
-                {/* {x?.day?.condition?.text} */}
+                {x?.weather?.[0]?.main}
               </Typography>
             </div>
+            </Box>
           </div>
         
       ))}
