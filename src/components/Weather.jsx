@@ -1,8 +1,8 @@
-import React, { Suspense, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Typography from "@mui/material/Typography";
 //Import Others library
 import moment from "moment";
-import { Skeleton, Stack } from "@mui/material";
+import {  Skeleton, Stack } from "@mui/material";
 //Import Icons
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import TodayOutlinedIcon from "@mui/icons-material/TodayOutlined";
@@ -10,7 +10,6 @@ import TodayOutlinedIcon from "@mui/icons-material/TodayOutlined";
 import "./weather.css";
 //Import Colors
 import { blueGrey } from "@mui/material/colors";
-
 //Import Component
 import DaysDetails from "./DaysDetails";
 
@@ -33,7 +32,6 @@ const Weather = () => {
         }
       })
       .then(function (data) {
-        // console.log(data, "all Data", data.city.name); //just for verification
         setData({
           city: data.city.name,
           country: data.city.country,
@@ -44,12 +42,11 @@ const Weather = () => {
           temp_min: data.list[0].main.temp_min,
           pressure: data.list[0].main.pressure,
           humidity: data.list[0].main.humidity,
+          desc: data.list?.[0].weather?.[0].description,
           days: data.list,
         });
       })
-      .catch((err) => {
-        console.log("Error : " + err);
-      });
+      .catch((err) => console.log(err))
   }
 
   useEffect(() => {
@@ -57,15 +54,10 @@ const Weather = () => {
   }, [isCity]);
 
   //Get data of current
-
   const handleSubmit = (event) => {
     setIsCity(event.target.value);
     getWeather(isCity);
   };
-  var today = new Date();
-  var isDay = today.getHours() > 18 ? 0 : 1;
-
-  console.log(data, "data", data.length);
 
   return (
     <>
@@ -99,7 +91,7 @@ const Weather = () => {
                 </Typography>
               </div>
               <div className="right_side">
-                {data.length == 0 ? (
+                {data.length === 0 ? (
                   <Stack spacing={5}>
                     <Skeleton
                       variant="circular"
@@ -122,6 +114,9 @@ const Weather = () => {
                         alt=""
                         src={`http://openweathermap.org/img/w/${data.days?.[0]?.weather?.[0].icon}.png`}
                       />
+                      <Typography variant="subtitle2" className="img_info_desc">
+                        {data.desc}
+                      </Typography>
                     </>
                   </Typography>
                 )}
