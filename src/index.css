@@ -3,8 +3,8 @@ body {
   font-family: "Nanum Gothic", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-image: url(./assets/images/bg.jpg); */
-  /* background-color: whitesmoke; */
+  background-image: url(./assets/images/blury-bg.jpg);
+  /* background-color: rgba(228, 228, 228, 0.445); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

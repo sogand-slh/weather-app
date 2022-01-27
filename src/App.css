@@ -1,7 +1,14 @@
+#root {
+  --font-color-light: #fafeff;
+  --font-color-dark: #000b46;
+  --main-color-light: #fafeff;
+  --main-color-dark: #000b46;
+}
+
 .image_info_day {
   display: flex;
   height: 100% !important;
-  background: linear-gradient(to right, #0052d4, #65c7f7, #9cecfb);
+  background: linear-gradient(to right, #0052d4, #65c7f7, #fafeffa9);
 }
 .image_info_night {
   display: flex;

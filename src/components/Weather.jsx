@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import Typography from "@mui/material/Typography";
 //Import Others library
 import moment from "moment";
-
+import { Skeleton, Stack } from "@mui/material";
 //Import Icons
-import CloudIcon from "@mui/icons-material/Cloud";
-import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import TodayOutlinedIcon from "@mui/icons-material/TodayOutlined";
 //import styles
@@ -66,19 +64,25 @@ const Weather = () => {
   };
   var today = new Date();
   var isDay = today.getHours() > 18 ? 0 : 1;
+
+  console.log(data, "data", data.length);
+
   return (
     <>
       <React.Fragment>
         <main className="container">
-          <div className="card">
-            <div>
+          <div
+            className="card"
+            style={{
+              backgroundColor: "#ffffff",
+            }}>
+            <div className="top_info">
               <div className="left_side">
                 <Typography
                   variant="h5"
                   component="div"
-                  className="img_info_cityName"
-                  sx={{ color: blueGrey }}>
-                  <LocationOnOutlinedIcon style={{ color: blueGrey }} />
+                  className="img_info_cityName">
+                  <LocationOnOutlinedIcon className="icons_color" />
                   {data.city}
                 </Typography>
 
@@ -89,37 +93,40 @@ const Weather = () => {
                   <TodayOutlinedIcon
                     fontSize="10"
                     style={{ marginRight: "5px" }}
-                    sx={{ color: blueGrey }}
+                    className="icons_color"
                   />
                   {objToday},{fullDay}
                 </Typography>
               </div>
               <div className="right_side">
-                {" "}
-                <Typography variant="h3" sx={{ color: blueGrey }}>
-                  {data.temp}
-                  <span className="symb_cent">°C</span>
-                  {data.temp > 10 ? (
-                    <WbSunnyIcon
+                {data.length == 0 ? (
+                  <Stack spacing={5}>
+                    <Skeleton
+                      variant="circular"
+                      width={80}
+                      height={80}
                       style={{
-                        marginBottom: "15px",
-                        marginLeft: "5px",
-                        color: "yellow",
+                        display: "flex",
+                        justifyContent: "center",
+                        backgroundColor: "#fafeffa9",
                       }}
                     />
-                  ) : (
-                    <CloudIcon
-                      style={{
-                        marginBottom: "15px",
-                        marginLeft: "5px",
-                        color: "#0052d4",
-                      }}
-                    />
-                  )}
-                </Typography>{" "}
+                  </Stack>
+                ) : (
+                  <Typography variant="h3" sx={{ color: blueGrey }}>
+                    {data.temp}
+                    <>
+                      <span className="symb_cent">°C</span>
+                      <img
+                        style={{ width: "35px", height: "35px" }}
+                        alt=""
+                        src={`http://openweathermap.org/img/w/${data.days?.[0]?.weather?.[0].icon}.png`}
+                      />
+                    </>
+                  </Typography>
+                )}
               </div>
             </div>
-
             <form className="formCity">
               <label>City: </label>
               <input
@@ -128,13 +135,8 @@ const Weather = () => {
                 name="city"
                 placeholder="City"
                 value={isCity}
-                defaultValue="Mashhad"
-                style={{}}
                 onChange={handleSubmit}
               />
-              {/* <Fab size="small" aria-label="search">
-                <SearchOutlinedIcon />
-              </Fab> */}
             </form>
             <div className="info">
               <DaysDetails data={data.days} />
