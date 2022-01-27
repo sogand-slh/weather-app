@@ -12,12 +12,12 @@ const DaysDetails = (data) => {
   const _data = data?.data;
   const days = _data?.map((item) => item.dt_txt.split(" ")?.[0]);
   const uniqDay = [...new Set(days)];
-
   uniqDaysData = uniqDay?.map(
     (item) => _data.filter((x) => x.dt_txt.split(" ")?.[0] === item)?.[0]
-  );
-  uniqDaysData.shift();
-
+    );
+    uniqDaysData.shift();
+    
+    console.log(uniqDaysData);
   return (
     <React.Fragment>
       {" "}
