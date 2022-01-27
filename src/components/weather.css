@@ -78,7 +78,7 @@
 .info {
   margin-top: 25px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
 /* */

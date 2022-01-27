@@ -58,7 +58,7 @@ const Weather = () => {
     setIsCity(event.target.value);
     getWeather(isCity);
   };
-
+  console.log(data);
   return (
     <>
       <React.Fragment>
