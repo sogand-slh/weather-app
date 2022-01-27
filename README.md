@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Design preview for the Weathe_App](https://github.com/sogand-slh/weather-app/blob/master/src/assets/images/weather-app.png).
 
 ## Available Scripts
 
