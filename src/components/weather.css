@@ -40,33 +40,13 @@
   font-weight: 200;
   padding-left: 20px;
 }
-.img_info_desc{
+.img_info_desc {
   text-align: left;
   font-size: 12px;
   font-weight: 200;
   margin-top: 0;
 }
 
-@media screen and (max-width: 1400px) {
-  .container {
-    display: flex;
-    margin: 2.5rem auto;
-    justify-content: center;
-    align-items: center;
-    width: 85%;
-    height: 500px;
-  }
-}
-@media screen and (min-width: 600px) {
-  .container {
-    display: flex;
-    margin: 2.5rem auto;
-    justify-content: center;
-    align-items: center;
-    width: 85%;
-    height: 500px;
-  }
-}
 .top_info {
   display: flex;
   /* background-color: #000b46; */

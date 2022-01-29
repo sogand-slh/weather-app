@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Typography from "@mui/material/Typography";
 //Import Others library
 import moment from "moment";
-import {  Skeleton, Stack } from "@mui/material";
+import { Container, Skeleton, Stack } from "@mui/material";
 //Import Icons
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import TodayOutlinedIcon from "@mui/icons-material/TodayOutlined";
@@ -46,7 +46,7 @@ const Weather = () => {
           days: data.list,
         });
       })
-      .catch((err) => console.log(err))
+      .catch((err) => console.log(err));
   }
 
   useEffect(() => {
@@ -62,7 +62,12 @@ const Weather = () => {
   return (
     <>
       <React.Fragment>
-        <main className="container">
+        <Container
+          maxWidth="sm"
+          style={{
+            justifyContent: "center",
+            margin: "2.5rem auto",
+          }}>
           <div
             className="card"
             style={{
@@ -137,7 +142,7 @@ const Weather = () => {
               <DaysDetails data={data.days} />
             </div>
           </div>
-        </main>
+        </Container>
       </React.Fragment>
     </>
   );
